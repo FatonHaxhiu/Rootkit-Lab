@@ -1,0 +1,30 @@
+name: Build and Test Rootkit
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install gcc
+      run: sudo apt-get update && sudo apt-get install -y build-essential
+
+    - name: Build rootkit shared library
+      working-directory: ./rootkit
+      run: make
+
+    - name: Check if rootkit.so created
+      run: test -f ./rootkit/rootkit.so
+
+    - name: Check detection script syntax
+      run: bash -n ./detection/detect.sh
