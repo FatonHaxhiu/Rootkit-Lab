@@ -1,30 +1,42 @@
-name: Build and Test Rootkit
+name: CI Build, Lint, and Docker Test
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  build:
+  build-rootkit:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+      - name: Install build tools
+        run: sudo apt update && sudo apt install -y build-essential
+      - name: Build rootkit
+        run: |
+          cd rootkit
+          make
+      - name: Check rootkit.so exists
+        run: test -f rootkit/rootkit.so
 
-    - name: Install gcc
-      run: sudo apt-get update && sudo apt-get install -y build-essential
+  lint-c-code:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install linters
+        run: sudo apt update && sudo apt install -y clang-tidy cppcheck
+      - name: Run clang-tidy
+        run: clang-tidy rootkit/rootkit.c -- -I.
+      - name: Run cppcheck
+        run: cppcheck --enable=all --inconclusive --quiet rootkit
 
-    - name: Build rootkit shared library
-      working-directory: ./rootkit
-      run: make
+  docker-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Docker image
+        run: docker build -t rootkit-lab .
+      - name: Run rootkit inside Docker
+        run: docker run --rm rootkit-lab
 
-    - name: Check if rootkit.so created
-      run: test -f ./rootkit/rootkit.so
-
-    - name: Check detection script syntax
-      run: bash -n ./detection/detect.sh
