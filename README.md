@@ -10,6 +10,21 @@ Rootkits are stealthy malware that hide their presence on a system. This project
 
 This is **for educational purposes only** and should only be run in controlled lab environments.
 
+## 🛠️ Technologies Used
+
+- **C** — for the rootkit shared library (`LD_PRELOAD` hooking)
+- **Bash** — for the detection scripts
+- **GitHub Actions** — for continuous integration (building and testing)
+
+---
+
+## ✅ Continuous Integration Status
+
+This project uses GitHub Actions to automatically build the rootkit and run syntax checks on the detection scripts. The latest workflow runs are **passing**.
+
+![GitHub Workflow Status](https://github.com/FatonHaxhiu/Rootkit-Lab/actions/workflows/ci.yml/badge.svg)
+
+
 ---
 
 ## ⚙️ Features
