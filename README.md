@@ -9,6 +9,12 @@ An **educational Linux userland rootkit** built using `LD_PRELOAD`, designed to 
 ## ✅ GitHub Actions Status
 
 ![Build](https://github.com/FatonHaxhiu/Rootkit-Lab/actions/workflows/ci.yml/badge.svg)
+![C](https://img.shields.io/badge/C-ISO%209989%3A1990-blue)
+![clang-tidy](https://img.shields.io/badge/clang--tidy-checked-green)
+![cppcheck](https://img.shields.io/badge/cppcheck-passed-brightgreen)
+![Docker](https://img.shields.io/badge/Docker-20.10-blue)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 
 ---
 
