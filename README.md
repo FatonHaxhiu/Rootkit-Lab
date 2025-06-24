@@ -1,34 +1,34 @@
-# 🕵️ edu-rootkit-lab
+# 🕵️‍♂️ Rootik Tool
 
-An educational Linux rootkit project that demonstrates how userland rootkits work using `LD_PRELOAD`. Includes detection mechanisms and runs only in sandboxed environments.
-
-## 🔧 Components
-
-- `rootkit/`: LD_PRELOAD-based file hiding
-- `detection/`: Scripts to detect suspicious behavior
-
-## ⚠️ Legal Disclaimer
-
-For educational use only. Do not use on any system without permission. This tool is meant to demonstrate how rootkits can be detected.
-
-## 🔬 Usage
-
-### Compile the rootkit:
-```bash
-cd rootkit
-make
-
+An **educational Linux rootkit project** demonstrating basic userland rootkit techniques using `LD_PRELOAD` to hide files and processes. Includes detection scripts to help understand how rootkits operate and how to spot them.
 
 ---
 
-## ✅ Step 7: Add LICENSE (MIT)
+## 📚 Project Overview
 
-In `LICENSE` file:
+Rootkits are stealthy malware that hide their presence on a system. This project simulates a simple userland rootkit that intercepts system calls to hide files and processes containing a specific keyword (`rk_`). It also includes a detection script that checks for suspicious environment variables and process anomalies.
 
-```text
-MIT License
+This is **for educational purposes only** and should only be run in controlled lab environments.
 
-Copyright (c) 2025 [Your Name]
+---
 
-Permission is hereby granted, free of charge, to any person obtaining a copy...
-[Include full MIT license text — I can insert the full text if needed]
+## ⚙️ Features
+
+- **File hiding**: Overrides `readdir()` via `LD_PRELOAD` to hide files/directories with names containing `rk_`
+- **Detection script**: Checks if `LD_PRELOAD` is set and detects discrepancies between `/proc` and `ps` to find hidden processes
+- Modular and easy-to-understand C and Bash code for learning
+
+---
+
+## 🛠️ Installation & Usage
+
+### Prerequisites
+
+- Linux system (tested on Kali Linux)
+- GCC compiler for building shared libraries
+
+### Build the Rootkit
+
+```bash
+cd rootkit
+make
