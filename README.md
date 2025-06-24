@@ -1,14 +1,8 @@
-# 🕵️‍♂️ Rootik Tool
+# 🕵️‍♂️ Rootkit Tool
 
 An **educational Linux rootkit project** demonstrating basic userland rootkit techniques using `LD_PRELOAD` to hide files and processes. Includes detection scripts to help understand how rootkits operate and how to spot them.
 
 ---
-
-## 📚 Project Overview
-
-Rootkits are stealthy malware that hide their presence on a system. This project simulates a simple userland rootkit that intercepts system calls to hide files and processes containing a specific keyword (`rk_`). It also includes a detection script that checks for suspicious environment variables and process anomalies.
-
-This is **for educational purposes only** and should only be run in controlled lab environments.
 
 ## 🛠️ Technologies Used
 
@@ -24,6 +18,13 @@ This project uses GitHub Actions to automatically build the rootkit and run synt
 
 ![GitHub Workflow Status](https://github.com/FatonHaxhiu/Rootkit-Lab/actions/workflows/ci.yml/badge.svg)
 
+---
+
+## 📚 Project Overview
+
+Rootkits are stealthy malware that hide their presence on a system. This project simulates a simple userland rootkit that intercepts system calls to hide files and processes containing a specific keyword (`rk_`). It also includes a detection script that checks for suspicious environment variables and process anomalies.
+
+This is **for educational purposes only** and should only be run in controlled lab environments.
 
 ---
 
